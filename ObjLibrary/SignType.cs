@@ -10,19 +10,6 @@ namespace ObjLibrary
     {
         #region fields
         
-        //public enum SIGN_POSITION_TYPE
-        //{
-        //    SPT_START_INPUT = 0,
-        //    SPT_INPUT_DATA = 1,
-
-        //    SPT_START_TIME = 2,
-        //    SPT_START_DATE = 3,
-        //    SPT_START_IX_NUM = 4,
-        //    SPT_START_ACS_NUM = 5,
-
-        //    SPT_END_INPUT = 6
-        //}
-
         static byte[,] ary = new byte[7, 2] { 
                                             {/*0*/ (byte)SIGN_POSITION_TYPE.SPT_START_INPUT, (byte)'<' },
                                             {/*1*/ (byte)SIGN_POSITION_TYPE.SPT_SRC_DATA, (byte)'='},

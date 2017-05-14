@@ -101,8 +101,6 @@ namespace ObjLibrary
 
                 }
 
-
-                //if (!fileLogger.WriteListOfStrings(list_q_str)) file_log_err_count++;
             }
 
             EventHandler<AnObjectArg> onCompleteDoWorkEventHandler = OnCompleteDoWorkEventHandler;

@@ -6,15 +6,6 @@ using System.Threading.Tasks;
 
 namespace ObjLibrary
 {
-    //public enum UART_STATE
-    //{
-    //    UART_IS_UNDEFINED,
-    //    UART_IS_LISTENING,
-    //    UART_IS_TRANSMITING,
-    //    UART_IS_RECEIVING
-    //}
-
-
     public enum BUFFER_DATA_TYPE
     {
         BFDT_ERR_STRING,

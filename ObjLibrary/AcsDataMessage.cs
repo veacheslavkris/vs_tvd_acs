@@ -90,16 +90,10 @@ namespace ObjLibrary
 
         #region cstor
 
-        public AcsDataMessage(StructFieldAcsMsg[] ary_StructFieldAcsMsg_/*, ACS_MSG_STATE state_*/)
+        public AcsDataMessage(StructFieldAcsMsg[] ary_StructFieldAcsMsg_)
         {
-            //ary_StructFieldAcsMsg[0] = structDataSrc;
-            //ary_StructFieldAcsMsg[1] = structStartTime;
-            //ary_StructFieldAcsMsg[2] = structStartDate;
-            //ary_StructFieldAcsMsg[3] = structStartIxNum;
-            //ary_StructFieldAcsMsg[4] = structStartAcsNum;
+            
             logDateTime = DateTime.Now;
-
-            //state = state_;
 
             reader = new String(ary_StructFieldAcsMsg_[0].ary_chars, 0, ary_StructFieldAcsMsg_[0].data_length);
 

@@ -13,8 +13,6 @@ namespace ObjLibrary
         #region fields
 
         SerialPort serialPort;
-        //const long ONE_SECOND_TICKS = 10000000;
-        //const long WAITING_TIME_TICKS = 3 * ONE_SECOND_TICKS;
 
         string com_port_name;
 
@@ -79,8 +77,6 @@ namespace ObjLibrary
             open_com_port();
 
             serialPort.Write(ary_bytes_, 0, ary_bytes_.Count());
-
-            //close_com_port();
         }
         
 
@@ -95,41 +91,7 @@ namespace ObjLibrary
             {
                 EventHandlerReceiveUartData?.Invoke(this, new DataStringArg(str));
             }
-
-            ////ArgumentNullException
-            ////The buffer passed is null.
-
-            ////InvalidOperationException
-            ////The specified port is not open.
-
-            ////ArgumentOutOfRangeException
-            ////The offset or count parameters are outside a valid region of the buffer being passed. Either offset or count is less than zero. 
-
-            ////ArgumentException
-            ////offset plus count is greater than the length of the buffer. 
-
-            ////TimeoutException
-            ////No bytes were available to read.
-
-            //int bytes_count = sp.BytesToRead;
-            //byte[] ary_bytes = new byte[bytes_count];
-            //sp.Read(ary_bytes, 0, bytes_count);
-
-            //if (ary_bytes.Length > 0)
-            //{
-            //    on_receive_uart_data(ary_bytes);
-            //}
         }
-
-        //void on_receive_uart_data(byte[] ary_bytes_)
-        //{
-        //    EventHandlerReceiveUartData?.Invoke(this, new UartDataBytesArgs(ary_bytes_));
-        //}
-
-        //void on_receive_uart_string(string uart_string_)
-        //{
-        //    EventHandlerReceiveUartData?.Invoke(this, new DataStringArg(uart_string_));
-        //}
 
         private void close_com_port()
         {

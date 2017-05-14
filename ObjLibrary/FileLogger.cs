@@ -122,16 +122,6 @@ namespace ObjLibrary
                 result = true;
             }
 
-            #region old
-            //using (StreamWriter sr = new StreamWriter(DATA_FILE_PATH, true))
-            //{
-            //    foreach (AnQueueString q_str_ in list_q_str_)
-            //    {
-            //        sr.WriteLine(q_str_.DATE_TIME_AND_DATA_AS_STRING);
-            //    }
-            //} 
-            #endregion
-
             if (result == true)
             {
                 StreamWriter sr = null;
