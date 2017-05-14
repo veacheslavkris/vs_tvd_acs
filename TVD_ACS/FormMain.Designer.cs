@@ -416,10 +416,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridViewTextBoxColumn cOUNTCHARSDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cOUNTADDINGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nUMBERDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dATASTRINGDataGridViewTextBoxColumn;
+
         private System.Windows.Forms.StatusStrip statusStripMain;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelInfo;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -436,7 +433,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripBtnMeasure;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sTRDATADataGridViewTextBoxColumn;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton toolStripButtonSyncTime;
@@ -450,14 +446,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label_err_cnt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tIMEASSTRINGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dATEASSTRINGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tIMESTRINGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dATESTRINGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tIMEDATESTRINGDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iXNUMBERDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aCSNUMBERDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn LOG_TIME_DATE_STRING;
         private System.Windows.Forms.DataGridViewTextBoxColumn rEADERDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ACS_TIME_DATE_STRING;
