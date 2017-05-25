@@ -1,0 +1,10 @@
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\bin\Debug\DbObjLibrary.dll
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\bin\Debug\DbObjLibrary.pdb
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\obj\Debug\DbObjLibrary.csprojResolveAssemblyReference.cache
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\obj\Debug\DbObjLibrary.dll
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\obj\Debug\DbObjLibrary.pdb
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\bin\Debug\DbObjLibrary.dll.config
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\bin\Debug\EntityFramework.dll
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\bin\Debug\EntityFramework.SqlServer.dll
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\bin\Debug\EntityFramework.xml
+C:\Projects\VS\TVD\TVD_ACS\DbObjLibrary\bin\Debug\EntityFramework.SqlServer.xml

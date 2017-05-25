@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TvarditaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="acs_card">
+          <Key>
+            <PropertyRef Name="id_acs_card" />
+          </Key>
+          <Property Name="id_acs_card" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ix_mcu" Type="int" Nullable="false" />
+          <Property Name="str_card_number" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="card_number" Type="int" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="acs_card_state">
+          <Key>
+            <PropertyRef Name="id_acs_card_state" />
+          </Key>
+          <Property Name="id_acs_card_state" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="card_state" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="date_time" Type="datetime" Nullable="false" />
+          <Property Name="id_acs_card" Type="int" Nullable="false" />
+          <Property Name="id_person" Type="int" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="acs_event">
+          <Key>
+            <PropertyRef Name="id_acs_event" />
+          </Key>
+          <Property Name="id_acs_event" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tx_date_time" Type="datetime" Nullable="false" />
+          <Property Name="rx_date_time" Type="datetime" Nullable="false" />
+          <Property Name="id_acs_card" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id_department" />
+          </Key>
+          <Property Name="id_department" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_departm" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="person">
+          <Key>
+            <PropertyRef Name="id_person" />
+          </Key>
+          <Property Name="id_person" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="m_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="l_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ext_id_person" Type="int" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="person_department_position">
+          <Key>
+            <PropertyRef Name="id_prsn_dprtm_pos" />
+          </Key>
+          <Property Name="id_prsn_dprtm_pos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datetime_pos" Type="datetime" Nullable="false" />
+          <Property Name="id_person" Type="int" Nullable="false" />
+          <Property Name="id_department" Type="int" Nullable="false" />
+          <Property Name="id_work_position" Type="int" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="person_rec_fir_state">
+          <Key>
+            <PropertyRef Name="id_prsn_rec_fir_state" />
+          </Key>
+          <Property Name="id_prsn_rec_fir_state" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_person" Type="int" Nullable="false" />
+          <Property Name="date_time_state" Type="datetime" Nullable="false" />
+          <Property Name="id_rec_fir_state" Type="int" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="work_position">
+          <Key>
+            <PropertyRef Name="id_work_position" />
+          </Key>
+          <Property Name="id_work_position" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_position" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_acs_card_state_acs_card">
+          <End Role="acs_card" Type="Self.acs_card" Multiplicity="1" />
+          <End Role="acs_card_state" Type="Self.acs_card_state" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acs_card">
+              <PropertyRef Name="id_acs_card" />
+            </Principal>
+            <Dependent Role="acs_card_state">
+              <PropertyRef Name="id_acs_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acs_card_state_person">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="acs_card_state" Type="Self.acs_card_state" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="acs_card_state">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acs_event_acs_card">
+          <End Role="acs_card" Type="Self.acs_card" Multiplicity="1" />
+          <End Role="acs_event" Type="Self.acs_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acs_card">
+              <PropertyRef Name="id_acs_card" />
+            </Principal>
+            <Dependent Role="acs_event">
+              <PropertyRef Name="id_acs_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_person_rec_fir_state_person">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="person_rec_fir_state" Type="Self.person_rec_fir_state" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="person_rec_fir_state">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TvarditaModelStoreContainer">
+          <EntitySet Name="acs_card" EntityType="Self.acs_card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="acs_card_state" EntityType="Self.acs_card_state" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="acs_event" EntityType="Self.acs_event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="person" EntityType="Self.person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="person_department_position" EntityType="Self.person_department_position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="person_rec_fir_state" EntityType="Self.person_rec_fir_state" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="work_position" EntityType="Self.work_position" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_acs_card_state_acs_card" Association="Self.FK_acs_card_state_acs_card">
+            <End Role="acs_card" EntitySet="acs_card" />
+            <End Role="acs_card_state" EntitySet="acs_card_state" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acs_card_state_person" Association="Self.FK_acs_card_state_person">
+            <End Role="person" EntitySet="person" />
+            <End Role="acs_card_state" EntitySet="acs_card_state" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acs_event_acs_card" Association="Self.FK_acs_event_acs_card">
+            <End Role="acs_card" EntitySet="acs_card" />
+            <End Role="acs_event" EntitySet="acs_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_person_rec_fir_state_person" Association="Self.FK_person_rec_fir_state_person">
+            <End Role="person" EntitySet="person" />
+            <End Role="person_rec_fir_state" EntitySet="person_rec_fir_state" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TvarditaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="acs_card">
+          <Key>
+            <PropertyRef Name="id_acs_card" />
+          </Key>
+          <Property Name="id_acs_card" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ix_mcu" Type="Int32" Nullable="false" />
+          <Property Name="str_card_number" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="card_number" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="acs_card_state" Relationship="Self.FK_acs_card_state_acs_card" FromRole="acs_card" ToRole="acs_card_state" />
+          <NavigationProperty Name="acs_event" Relationship="Self.FK_acs_event_acs_card" FromRole="acs_card" ToRole="acs_event" />
+        </EntityType>
+        <EntityType Name="acs_card_state">
+          <Key>
+            <PropertyRef Name="id_acs_card_state" />
+          </Key>
+          <Property Name="id_acs_card_state" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="card_state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_acs_card" Type="Int32" Nullable="false" />
+          <Property Name="id_person" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="acs_card" Relationship="Self.FK_acs_card_state_acs_card" FromRole="acs_card_state" ToRole="acs_card" />
+          <NavigationProperty Name="person" Relationship="Self.FK_acs_card_state_person" FromRole="acs_card_state" ToRole="person" />
+        </EntityType>
+        <EntityType Name="acs_event">
+          <Key>
+            <PropertyRef Name="id_acs_event" />
+          </Key>
+          <Property Name="id_acs_event" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tx_date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="rx_date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_acs_card" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="acs_card" Relationship="Self.FK_acs_event_acs_card" FromRole="acs_event" ToRole="acs_card" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id_department" />
+          </Key>
+          <Property Name="id_department" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_departm" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="person">
+          <Key>
+            <PropertyRef Name="id_person" />
+          </Key>
+          <Property Name="id_person" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="m_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="l_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ext_id_person" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="acs_card_state" Relationship="Self.FK_acs_card_state_person" FromRole="person" ToRole="acs_card_state" />
+          <NavigationProperty Name="person_rec_fir_state" Relationship="Self.FK_person_rec_fir_state_person" FromRole="person" ToRole="person_rec_fir_state" />
+        </EntityType>
+        <EntityType Name="person_department_position">
+          <Key>
+            <PropertyRef Name="id_prsn_dprtm_pos" />
+          </Key>
+          <Property Name="id_prsn_dprtm_pos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datetime_pos" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_person" Type="Int32" Nullable="false" />
+          <Property Name="id_department" Type="Int32" Nullable="false" />
+          <Property Name="id_work_position" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="person_rec_fir_state">
+          <Key>
+            <PropertyRef Name="id_prsn_rec_fir_state" />
+          </Key>
+          <Property Name="id_prsn_rec_fir_state" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_person" Type="Int32" Nullable="false" />
+          <Property Name="date_time_state" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_rec_fir_state" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="person" Relationship="Self.FK_person_rec_fir_state_person" FromRole="person_rec_fir_state" ToRole="person" />
+        </EntityType>
+        <EntityType Name="work_position">
+          <Key>
+            <PropertyRef Name="id_work_position" />
+          </Key>
+          <Property Name="id_work_position" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_position" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_acs_card_state_acs_card">
+          <End Role="acs_card" Type="Self.acs_card" Multiplicity="1" />
+          <End Role="acs_card_state" Type="Self.acs_card_state" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acs_card">
+              <PropertyRef Name="id_acs_card" />
+            </Principal>
+            <Dependent Role="acs_card_state">
+              <PropertyRef Name="id_acs_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acs_event_acs_card">
+          <End Role="acs_card" Type="Self.acs_card" Multiplicity="1" />
+          <End Role="acs_event" Type="Self.acs_event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="acs_card">
+              <PropertyRef Name="id_acs_card" />
+            </Principal>
+            <Dependent Role="acs_event">
+              <PropertyRef Name="id_acs_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_acs_card_state_person">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="acs_card_state" Type="Self.acs_card_state" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="acs_card_state">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_person_rec_fir_state_person">
+          <End Role="person" Type="Self.person" Multiplicity="1" />
+          <End Role="person_rec_fir_state" Type="Self.person_rec_fir_state" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="person">
+              <PropertyRef Name="id_person" />
+            </Principal>
+            <Dependent Role="person_rec_fir_state">
+              <PropertyRef Name="id_person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TvarditaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="acs_card" EntityType="Self.acs_card" />
+          <EntitySet Name="acs_card_state" EntityType="Self.acs_card_state" />
+          <EntitySet Name="acs_event" EntityType="Self.acs_event" />
+          <EntitySet Name="departments" EntityType="Self.department" />
+          <EntitySet Name="people" EntityType="Self.person" />
+          <EntitySet Name="person_department_position" EntityType="Self.person_department_position" />
+          <EntitySet Name="person_rec_fir_state" EntityType="Self.person_rec_fir_state" />
+          <EntitySet Name="work_position" EntityType="Self.work_position" />
+          <AssociationSet Name="FK_acs_card_state_acs_card" Association="Self.FK_acs_card_state_acs_card">
+            <End Role="acs_card" EntitySet="acs_card" />
+            <End Role="acs_card_state" EntitySet="acs_card_state" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acs_event_acs_card" Association="Self.FK_acs_event_acs_card">
+            <End Role="acs_card" EntitySet="acs_card" />
+            <End Role="acs_event" EntitySet="acs_event" />
+          </AssociationSet>
+          <AssociationSet Name="FK_acs_card_state_person" Association="Self.FK_acs_card_state_person">
+            <End Role="person" EntitySet="people" />
+            <End Role="acs_card_state" EntitySet="acs_card_state" />
+          </AssociationSet>
+          <AssociationSet Name="FK_person_rec_fir_state_person" Association="Self.FK_person_rec_fir_state_person">
+            <End Role="person" EntitySet="people" />
+            <End Role="person_rec_fir_state" EntitySet="person_rec_fir_state" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TvarditaModelStoreContainer" CdmEntityContainer="TvarditaEntities">
+          <EntitySetMapping Name="acs_card">
+            <EntityTypeMapping TypeName="TvarditaModel.acs_card">
+              <MappingFragment StoreEntitySet="acs_card">
+                <ScalarProperty Name="id_acs_card" ColumnName="id_acs_card" />
+                <ScalarProperty Name="ix_mcu" ColumnName="ix_mcu" />
+                <ScalarProperty Name="str_card_number" ColumnName="str_card_number" />
+                <ScalarProperty Name="card_number" ColumnName="card_number" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="acs_card_state">
+            <EntityTypeMapping TypeName="TvarditaModel.acs_card_state">
+              <MappingFragment StoreEntitySet="acs_card_state">
+                <ScalarProperty Name="id_acs_card_state" ColumnName="id_acs_card_state" />
+                <ScalarProperty Name="card_state" ColumnName="card_state" />
+                <ScalarProperty Name="date_time" ColumnName="date_time" />
+                <ScalarProperty Name="id_acs_card" ColumnName="id_acs_card" />
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="acs_event">
+            <EntityTypeMapping TypeName="TvarditaModel.acs_event">
+              <MappingFragment StoreEntitySet="acs_event">
+                <ScalarProperty Name="id_acs_event" ColumnName="id_acs_event" />
+                <ScalarProperty Name="tx_date_time" ColumnName="tx_date_time" />
+                <ScalarProperty Name="rx_date_time" ColumnName="rx_date_time" />
+                <ScalarProperty Name="id_acs_card" ColumnName="id_acs_card" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="TvarditaModel.department">
+              <MappingFragment StoreEntitySet="department">
+                <ScalarProperty Name="id_department" ColumnName="id_department" />
+                <ScalarProperty Name="name_departm" ColumnName="name_departm" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="people">
+            <EntityTypeMapping TypeName="TvarditaModel.person">
+              <MappingFragment StoreEntitySet="person">
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="m_name" ColumnName="m_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="ext_id_person" ColumnName="ext_id_person" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="person_department_position">
+            <EntityTypeMapping TypeName="TvarditaModel.person_department_position">
+              <MappingFragment StoreEntitySet="person_department_position">
+                <ScalarProperty Name="id_prsn_dprtm_pos" ColumnName="id_prsn_dprtm_pos" />
+                <ScalarProperty Name="datetime_pos" ColumnName="datetime_pos" />
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+                <ScalarProperty Name="id_department" ColumnName="id_department" />
+                <ScalarProperty Name="id_work_position" ColumnName="id_work_position" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="person_rec_fir_state">
+            <EntityTypeMapping TypeName="TvarditaModel.person_rec_fir_state">
+              <MappingFragment StoreEntitySet="person_rec_fir_state">
+                <ScalarProperty Name="id_prsn_rec_fir_state" ColumnName="id_prsn_rec_fir_state" />
+                <ScalarProperty Name="id_person" ColumnName="id_person" />
+                <ScalarProperty Name="date_time_state" ColumnName="date_time_state" />
+                <ScalarProperty Name="id_rec_fir_state" ColumnName="id_rec_fir_state" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="work_position">
+            <EntityTypeMapping TypeName="TvarditaModel.work_position">
+              <MappingFragment StoreEntitySet="work_position">
+                <ScalarProperty Name="id_work_position" ColumnName="id_work_position" />
+                <ScalarProperty Name="name_position" ColumnName="name_position" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

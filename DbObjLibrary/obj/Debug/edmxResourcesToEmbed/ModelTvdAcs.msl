@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TvarditaModelStoreContainer" CdmEntityContainer="TvarditaEntities">
+    <EntitySetMapping Name="acs_card">
+      <EntityTypeMapping TypeName="TvarditaModel.acs_card">
+        <MappingFragment StoreEntitySet="acs_card">
+          <ScalarProperty Name="id_acs_card" ColumnName="id_acs_card" />
+          <ScalarProperty Name="ix_mcu" ColumnName="ix_mcu" />
+          <ScalarProperty Name="str_card_number" ColumnName="str_card_number" />
+          <ScalarProperty Name="card_number" ColumnName="card_number" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="acs_card_state">
+      <EntityTypeMapping TypeName="TvarditaModel.acs_card_state">
+        <MappingFragment StoreEntitySet="acs_card_state">
+          <ScalarProperty Name="id_acs_card_state" ColumnName="id_acs_card_state" />
+          <ScalarProperty Name="card_state" ColumnName="card_state" />
+          <ScalarProperty Name="date_time" ColumnName="date_time" />
+          <ScalarProperty Name="id_acs_card" ColumnName="id_acs_card" />
+          <ScalarProperty Name="id_person" ColumnName="id_person" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="acs_event">
+      <EntityTypeMapping TypeName="TvarditaModel.acs_event">
+        <MappingFragment StoreEntitySet="acs_event">
+          <ScalarProperty Name="id_acs_event" ColumnName="id_acs_event" />
+          <ScalarProperty Name="tx_date_time" ColumnName="tx_date_time" />
+          <ScalarProperty Name="rx_date_time" ColumnName="rx_date_time" />
+          <ScalarProperty Name="id_acs_card" ColumnName="id_acs_card" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="TvarditaModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="id_department" ColumnName="id_department" />
+          <ScalarProperty Name="name_departm" ColumnName="name_departm" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="people">
+      <EntityTypeMapping TypeName="TvarditaModel.person">
+        <MappingFragment StoreEntitySet="person">
+          <ScalarProperty Name="id_person" ColumnName="id_person" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="m_name" ColumnName="m_name" />
+          <ScalarProperty Name="l_name" ColumnName="l_name" />
+          <ScalarProperty Name="ext_id_person" ColumnName="ext_id_person" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="person_department_position">
+      <EntityTypeMapping TypeName="TvarditaModel.person_department_position">
+        <MappingFragment StoreEntitySet="person_department_position">
+          <ScalarProperty Name="id_prsn_dprtm_pos" ColumnName="id_prsn_dprtm_pos" />
+          <ScalarProperty Name="datetime_pos" ColumnName="datetime_pos" />
+          <ScalarProperty Name="id_person" ColumnName="id_person" />
+          <ScalarProperty Name="id_department" ColumnName="id_department" />
+          <ScalarProperty Name="id_work_position" ColumnName="id_work_position" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="person_rec_fir_state">
+      <EntityTypeMapping TypeName="TvarditaModel.person_rec_fir_state">
+        <MappingFragment StoreEntitySet="person_rec_fir_state">
+          <ScalarProperty Name="id_prsn_rec_fir_state" ColumnName="id_prsn_rec_fir_state" />
+          <ScalarProperty Name="id_person" ColumnName="id_person" />
+          <ScalarProperty Name="date_time_state" ColumnName="date_time_state" />
+          <ScalarProperty Name="id_rec_fir_state" ColumnName="id_rec_fir_state" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="work_position">
+      <EntityTypeMapping TypeName="TvarditaModel.work_position">
+        <MappingFragment StoreEntitySet="work_position">
+          <ScalarProperty Name="id_work_position" ColumnName="id_work_position" />
+          <ScalarProperty Name="name_position" ColumnName="name_position" />
+          <ScalarProperty Name="note" ColumnName="note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="acc955162e2246f3804331ffb9da812f" Name="Diagram1">
+        <EntityTypeShape EntityType="TvarditaModel.acs_card" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TvarditaModel.acs_card_state" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TvarditaModel.acs_event" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TvarditaModel.department" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TvarditaModel.person" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TvarditaModel.person_department_position" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TvarditaModel.person_rec_fir_state" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TvarditaModel.work_position" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="TvarditaModel.FK_acs_card_state_acs_card" ManuallyRouted="false" />
+        <AssociationConnector Association="TvarditaModel.FK_acs_event_acs_card" ManuallyRouted="false" />
+        <AssociationConnector Association="TvarditaModel.FK_acs_card_state_person" ManuallyRouted="false" />
+        <AssociationConnector Association="TvarditaModel.FK_person_rec_fir_state_person" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
